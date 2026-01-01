@@ -16,7 +16,7 @@ export const createuser = async (req, res) => {
     const result = await prodectColection.insertOne(newuser);
 
     const user = await prodectColection.findOne({ _id: result.insertedId });
-    res.status(201).json({ msg: "success", data: user });
+    res.status(201).json({  id: user._id ,username: user.username});
   } catch (err) {
     console.error(err);
     if (err.code === 11000) {

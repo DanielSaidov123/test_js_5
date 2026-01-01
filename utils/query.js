@@ -13,17 +13,17 @@ const create = async (req, taskData) => {
 };
 
 const getById = async (req, id) => {
-  const [tasks] = await req.mysqlDBConn.query(
+  const [messages] = await req.mysqlDBConn.query(
     "SELECT * FROM messages WHERE id = ?",
     [id]
   );
-  console.log(tasks);
+  console.log(messages);
 
-  return tasks[0];
+  return messages[0];
 };
 const getAll = async (req) => {
-  const [tasks] = await req.mysqlDBConn.query("SELECT * FROM messages ");
-  return tasks;
+  const [messages] = await req.mysqlDBConn.query("SELECT * FROM messages ");
+  return messages;
 };
 
 export default {
