@@ -22,9 +22,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({
-    message: "Welcome to the server that manages products and orders",
+    message: "Welcome to the server of daniel",
   });
 });
 

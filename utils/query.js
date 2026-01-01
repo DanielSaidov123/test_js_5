@@ -25,9 +25,15 @@ const getAll = async (req) => {
   const [messages] = await req.mysqlDBConn.query("SELECT * FROM messages ");
   return messages;
 };
-
+const getAllbyusername = async (req,username) => {
+  const [messages] = await req.mysqlDBConn.query(
+    "SELECT * FROM messages WHERE username =?",[username]
+  );
+  return messages;
+};
 export default {
   create,
   getById,
   getAll,
+  getAllbyusername,
 };
