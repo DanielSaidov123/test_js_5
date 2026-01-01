@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api/", users);
+app.use("/api/auth", users);
  
 
 
