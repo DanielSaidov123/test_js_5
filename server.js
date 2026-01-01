@@ -1,0 +1,38 @@
+import express from "express";
+import { getDb, initMongoDb } from "./utils/mongodb.js";
+import { getConn, initDb } from "./utils/mysql.js";
+
+
+
+
+const app = express();
+const PORT = 8002;
+
+app.use(express.json());
+
+app.use(async (req, res, next) => {
+  req.mysqlDBConn = await getConn();
+  req.mongodbCone = await getDb()
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to the server that manages products and orders",
+  });
+});
+
+// app.use("/api/products", products);
+// app.use("/api/orders", orders);
+
+
+app.listen(PORT, async () => {
+  await initDb();
+  await initMongoDb();
+  console.log(`Server is running on port ${PORT}...`);
+});
