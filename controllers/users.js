@@ -5,7 +5,6 @@ export const createuser = async (req, res) => {
         message: "No password or username entered.",
       });
     }
-    console.log(req.body.username);
     
     const newuser = {
     username:req.body.username,

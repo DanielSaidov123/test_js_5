@@ -1,6 +1,6 @@
 import q  from "../utils/query.js";
 
-export const createmessage = async (req, res) => {
+export const encrypt = async (req, res) => {
   try {
     if (!req.body.username || !req.body.password) {
       return res.status(401).json({
@@ -29,7 +29,7 @@ export const createmessage = async (req, res) => {
         const mss = await q.create(req,{username: req.body.username, cipher_type:req.body.cipherType, encrypted_text: reversedStr })
         const messag= await q.getById(req,mss)
         
-    res.status(201).json({ msg: "success", data: messag });
+    res.status(201).json({id:messag.id,cipherType :req.body.cipherType,encryptedText: messag.encrypted_text} );
      };
     
   } catch (err) {
@@ -38,7 +38,7 @@ export const createmessage = async (req, res) => {
       return res.status(409).json({
         msg: "error",
         data: null,
-        message: "A todo with this username already exists",
+        message: "A username with this username already exists",
       });
     }
     res.status(500).json({ msg: "error: " + err.message, data: null });
@@ -46,7 +46,7 @@ export const createmessage = async (req, res) => {
 };
 
 
-export const masseg = async (req, res) => {
+export const decrypt = async (req, res) => {
   try {
     if (!req.body.username || !req.body.password) {
       return res.status(401).json({
@@ -78,7 +78,7 @@ export const masseg = async (req, res) => {
       return res.status(409).json({
         msg: "error",
         data: null,
-        message: "A todo with this username already exists",
+        message: "A usernsme with this username already exists",
       });
     }
     res.status(500).json({ msg: "error: " + err.message, data: null });

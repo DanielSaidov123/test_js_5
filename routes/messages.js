@@ -1,10 +1,11 @@
 import express from "express";
-import { createmessage, masseg } from "../controllers/messages.js";
+import {   encrypt } from "../controllers/messages.js";
+import { decrypt } from "dotenv";
 
 const router = express.Router();
 
-router.route("/encrypt").post(createmessage ) 
-router.route("/decrypt").post(masseg ) 
+router.route("/encrypt").post(encrypt ) 
+router.route("/decrypt").post( decrypt ) 
 
  
 export default router;
