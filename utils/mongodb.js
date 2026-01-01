@@ -1,8 +1,8 @@
 import { MongoClient } from "mongodb";
 
 const MONGO_URL = process.env.MONGO_URL || "mongodb://admin:password123@localhost:27018/ecommerce?authSource=admin";
-const DB_NAME = "ecommerce";
-const COLLECTION_NAME = "products"
+const DB_NAME = "test2";
+const COLLECTION_NAME = "users"
 
 let mongocClient = null;
 let mongoConn = null;
@@ -15,10 +15,10 @@ export async function initMongoDb() {
     
     const todosCollection = mongoConn.collection(COLLECTION_NAME);
     
-    await todosCollection.createIndex({ name: 1 }, { unique: true },{required:true});
+    await todosCollection.createIndex({ username: 1 }, { unique: true } );
 
     
-    console.log("Database of mongodb initialized and unique index created on 'name' field");
+    console.log("Database of mongodb initialized and unique index created on 'username' field");
   } catch (error) {
     console.error("Error initializing database:", error);
     throw error;

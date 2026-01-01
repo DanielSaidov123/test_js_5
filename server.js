@@ -1,7 +1,7 @@
 import express from "express";
 import { getDb, initMongoDb } from "./utils/mongodb.js";
 import { getConn, initDb } from "./utils/mysql.js";
-
+import users from "./routes/users.js"
 
 
 
@@ -27,8 +27,8 @@ app.get("/", (req, res) => {
   });
 });
 
-// app.use("/api/products", products);
-// app.use("/api/orders", orders);
+app.use("/api/", users);
+ 
 
 
 app.listen(PORT, async () => {
