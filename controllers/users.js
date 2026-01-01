@@ -1,7 +1,7 @@
 export const createuser = async (req, res) => {
   try {
     if (!req.body.username || !req.body.password) {
-      return res.status(409).json({
+      return res.status(404).json({
         message: "No password or username entered.",
       });
     }
