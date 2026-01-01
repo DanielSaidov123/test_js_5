@@ -18,7 +18,7 @@ export async function initDb() {
   username VARCHAR(255) NOT NULL,
   cipher_type VARCHAR(255) NOT NULL,
   encrypted_text VARCHAR(255) NOT NULL,
-  inserted_at INT
+  inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
     `;
 

@@ -2,6 +2,7 @@ import express from "express";
 import { getDb, initMongoDb } from "./utils/mongodb.js";
 import { getConn, initDb } from "./utils/mysql.js";
 import users from "./routes/users.js"
+import messages from "./routes/messages.js"
 
 
 
@@ -28,6 +29,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", users);
+app.use("/api/messages", messages);
+
  
 
 
