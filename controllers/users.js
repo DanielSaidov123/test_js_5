@@ -24,7 +24,7 @@ export const createuser = async (req, res) => {
       return res.status(409).json({
         msg: "error",
         data: null,
-        message: "A todo with this username already exists",
+        message: "A username with this username already exists",
       });
     }
     res.status(500).json({ msg: "error: " + err.message, data: null });
@@ -62,7 +62,7 @@ export const getUser = async (req, res) => {
       return res.status(409).json({
         msg: "error",
         data: null,
-        message: "A todo with this username already exists",
+        message: "A username with this username already exists",
       });
     }
     res.status(500).json({ msg: "error: " + err.message, data: null });
